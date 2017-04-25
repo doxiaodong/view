@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strictNullChecks": false,
+    "noUnusedLocals": true,
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "baseUrl": "./src",
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "types": [
+      "jest",
+      "echarts"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
