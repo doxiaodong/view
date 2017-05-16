@@ -59,6 +59,7 @@
     "ordered-imports": [false],
     "no-consecutive-blank-lines": [true],
     "object-literal-shorthand": false,
-    "only-arrow-functions": [false]
+    "only-arrow-functions": [false],
+    "no-object-literal-type-assertion": false
   }
 }
