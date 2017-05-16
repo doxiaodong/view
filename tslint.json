@@ -19,7 +19,7 @@
         "singleline": "never"
       }
     ],
-    "object-literal-key-quotes": [false],
+    "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-sort-keys": false,
     "member-ordering": [
       true,

@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
+const BabiliPlugin = require("babili-webpack-plugin")
 
 const commonConfig = require('./common')
 const conf = require('./conf')
@@ -15,27 +16,10 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
     publicPath: '/'
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      beautify: false, //prod
-      output: {
-        comments: false
-      }, //prod
-      mangle: {
-        screw_ie8: true
-      }, //prod
-      compress: {
-        screw_ie8: true,
-        warnings: false,
-        conditionals: true,
-        unused: true,
-        comparisons: true,
-        sequences: true,
-        dead_code: true,
-        evaluate: true,
-        if_return: true,
-        join_vars: true
-      }
-    })
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new BabiliPlugin()
   ]
 })
