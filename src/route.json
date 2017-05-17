@@ -1,3 +1,4 @@
 {
-  "pi/overview": "/pi/overview"
+  "tree-shaking/normal": "/tree-shaking/normal",
+  "tree-shaking/test": "/tree-shaking/test"
 }

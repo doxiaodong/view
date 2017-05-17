@@ -1,6 +1,6 @@
 import { awaitPostMessage } from './awaitPostMessage'
 
-type callbackFn = (data: any) => void
+export type callbackFn = (data: any) => void
 
 export class Message {
 

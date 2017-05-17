@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",
     "strictNullChecks": false,
@@ -10,13 +10,10 @@
     "removeComments": true,
     "experimentalDecorators": true,
     "baseUrl": "./src",
+    "outDir": "tsc",
     "lib": [
       "es2015",
       "dom"
-    ],
-    "types": [
-      "jest",
-      "echarts"
     ]
   },
   "exclude": [

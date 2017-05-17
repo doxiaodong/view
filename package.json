@@ -10,10 +10,12 @@
     "test": "jest --coverage",
     "tslint": "tslint",
     "lint": "npm run tslint \"src/**/*.ts\"",
-    "prepush": "npm run build"
+    "prepush": "npm run build",
+    "tsc": "rm -rf tsc && tsc -d"
   },
   "dependencies": {
     "echarts": "^3.5.4",
+    "lodash-es": "^4.17.4",
     "typescript": "^2.3.2",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5",
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@types/echarts": "0.0.6",
     "@types/jest": "^19.2.3",
+    "@types/lodash-es": "^4.14.5",
     "@types/webpack": "^2.2.15",
     "autoprefixer": "^7.1.0",
     "babili-webpack-plugin": "^0.0.11",
@@ -31,7 +34,7 @@
     "husky": "^0.13.3",
     "jest": "^20.0.1",
     "moment": "^2.18.1",
-    "node-sass": "^4.5.2",
+    "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.5",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.17.0",
