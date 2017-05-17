@@ -1,3 +1,3 @@
-import { Interceptor } from 'intercept-fetch/src/interceptor'
+import { Interceptor } from 'intercept-fetch'
 
 console.log(new Interceptor({}))
