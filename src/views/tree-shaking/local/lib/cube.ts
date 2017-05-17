@@ -1,3 +1,3 @@
-export default function cube(x) {
-  return x * x * x
-}
+const cube = (x) => x * x * x
+
+export default cube

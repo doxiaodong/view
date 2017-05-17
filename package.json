@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "echarts": "^3.5.4",
+    "intercept-fetch": "^1.1.7",
     "lodash-es": "^4.17.4",
     "typescript": "^2.3.2",
     "webpack": "^2.5.1",
