@@ -51,6 +51,7 @@ module.exports = (option) => {
     plugins: apps.map((app) => {
       return new HtmlWebpackPlugin({
         template: `${entries[app]}/index.html`,
+        // template: `${entries[app].replace('tsc/', '')}/index.html`,
         filename: `${app}/index.html`,
         chunks: ['base', app]
       })

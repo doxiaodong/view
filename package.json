@@ -11,7 +11,7 @@
     "tslint": "tslint",
     "lint": "npm run tslint \"src/**/*.ts\"",
     "prepush": "npm run build",
-    "tsc": "rm -rf tsc && tsc -d"
+    "tsc": "rm -rf tsc && tsc"
   },
   "dependencies": {
     "echarts": "^3.5.4",

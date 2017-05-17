@@ -1,4 +1,5 @@
 {
-  "tree-shaking/normal": "/tree-shaking/normal",
-  "tree-shaking/test": "/tree-shaking/test"
+  "tree-shaking/lodash": "/tree-shaking/lodash",
+  "tree-shaking/lodash-normal-size": "/tree-shaking/lodash-normal-size",
+  "tree-shaking/local": "/tree-shaking/local"
 }
