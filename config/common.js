@@ -56,7 +56,13 @@ module.exports = (option) => {
         template: `${entries[app]}/index.html`,
         // template: `${entries[app].replace('tsc/', '')}/index.html`,
         filename: `${app}/index.html`,
-        chunks: ['base', app]
+        chunks: ['base', app],
+        minify: {
+          minifyCSS: true,
+          minifyJS: true,
+          collapseWhitespace: true,
+          removeComments: true
+        }
       })
     }).concat([
       new webpack.optimize.CommonsChunkPlugin({
