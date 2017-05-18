@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const chalk = require('chalk')
 
@@ -28,22 +29,24 @@ module.exports = (option) => {
         use: 'ts-loader'
       }, {
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              minimize: isProd
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: postCssPlugins
-            }
-          },
-          'sass-loader'
-        ],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: isProd
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: postCssPlugins
+              }
+            },
+            'sass-loader'
+          ]
+        }),
 
         exclude: [/global\.scss$/]
       }]
@@ -62,7 +65,8 @@ module.exports = (option) => {
       }),
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env)
-      })
+      }),
+      new ExtractTextPlugin(`static/[name]/[contenthash].css`)
     ]),
 
     node: {
