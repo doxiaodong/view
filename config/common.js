@@ -49,12 +49,15 @@ module.exports = (option) => {
         }),
 
         exclude: [/global\.scss$/]
+      }, {
+        test: /\.pug$/,
+        use: 'pug-loader'
       }]
     },
     plugins: apps.map((app) => {
       return new HtmlWebpackPlugin({
-        template: `${entries[app]}/index.html`,
-        // template: `${entries[app].replace('tsc/', '')}/index.html`,
+        template: `${entries[app]}/index.pug`,
+        // template: `${entries[app].replace('tsc/', '')}/index.pug`,
         filename: `${app}/index.html`,
         chunks: ['base', app],
         minify: {
