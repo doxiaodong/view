@@ -27,6 +27,7 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
     watchOptions: {
       aggregateTimeout: 300,
       poll: 1000
-    }
+    },
+    contentBase: conf.paths.src
   }
 })

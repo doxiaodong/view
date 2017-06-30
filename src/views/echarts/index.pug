@@ -1,0 +1,8 @@
+extends ~layout/base.pug
+
+block head
+  title echarts
+
+block body
+  - const { echarts } = htmlWebpackPlugin.options.polyfill
+  script(src=echarts)

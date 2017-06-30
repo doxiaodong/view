@@ -1,4 +1,5 @@
 {
+  "echarts": "/echarts",
   "tree-shaking/lodash": "/tree-shaking/lodash",
   "tree-shaking/lodash-normal-size": "/tree-shaking/lodash-normal-size",
   "tree-shaking/intercept-fetch": "/tree-shaking/intercept-fetch",

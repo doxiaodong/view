@@ -7,5 +7,6 @@ module.exports = {
     root: rootDir,
     src: abs('src'),
     dist: abs('dist')
-  }
+  },
+  publicPath: '/'
 }

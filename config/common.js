@@ -1,15 +1,22 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const chalk = require('chalk')
 
+const conf = require('./conf')
 const { apps, entries } = require('./apps')
+const polyfills = require('./polyfills')
 
 module.exports = (option) => {
   const env = option.env
   const isProd = env === 'production'
   console.log('The current env: ', chalk.blue(env))
+  const polyfillFiles = {}
+  polyfills.forEach(({ name, path, hash, ext }) => {
+    polyfillFiles[name] = isProd ? `${conf.publicPath}static/polyfill/${name}/${hash}.${ext}` : path.replace('./src', '')
+  })
   return {
     entry: entries,
     resolve: {
@@ -65,7 +72,8 @@ module.exports = (option) => {
           minifyJS: true,
           collapseWhitespace: true,
           removeComments: true
-        }
+        },
+        polyfill: polyfillFiles
       })
     }).concat([
       new webpack.optimize.CommonsChunkPlugin({
@@ -75,16 +83,14 @@ module.exports = (option) => {
       new webpack.DefinePlugin({
         ENV: JSON.stringify(env)
       }),
-      new ExtractTextPlugin(`static/[name]/[contenthash].css`)
-    ]),
-
-    node: {
-      global: true,
-      crypto: 'empty',
-      module: false,
-      clearImmediate: false,
-      setImmediate: false
-    }
+      new ExtractTextPlugin(`static/[name]/[contenthash].css`),
+      new CopyWebpackPlugin(
+        polyfills.map(({ name, path, hash, ext }) => ({
+          from: path,
+          to: `static/polyfill/${name}/${hash}.${ext}`
+        })).concat([{ from: 'src/favicon.ico', to: 'favicon.ico' },])
+      )
+    ])
   }
 }
 

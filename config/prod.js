@@ -13,7 +13,7 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
     path: conf.paths.dist,
     filename: 'static/[name]/[chunkhash].js',
     sourceMapFilename: 'static/[name]/[chunkhash].map',
-    publicPath: '/'
+    publicPath: conf.publicPath
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
@@ -21,5 +21,6 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
       debug: false
     }),
     new BabiliPlugin()
-  ]
+  ],
+  node: false
 })
