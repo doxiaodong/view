@@ -1,21 +1,26 @@
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const autoprefixer = require('autoprefixer')
-const chalk = require('chalk')
+import * as webpack from 'webpack'
+import * as HtmlWebpackPlugin from 'html-webpack-plugin'
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin'
+import * as CopyWebpackPlugin from 'copy-webpack-plugin'
+import * as autoprefixer from 'autoprefixer'
+import * as chalk from 'chalk'
 
-const conf = require('./conf')
-const { apps, entries } = require('./apps')
-const polyfills = require('./polyfills')
+import conf from './conf'
+import {
+  apps,
+  entries
+} from './apps'
+import polyfills from './polyfills'
 
-module.exports = (option) => {
+export default (option: { env: string }) => {
   const env = option.env
   const isProd = env === 'production'
   console.log('The current env: ', chalk.blue(env))
   const polyfillFiles = {}
   polyfills.forEach(({ name, path, hash, ext }) => {
-    polyfillFiles[name] = isProd ? `${conf.publicPath}static/polyfill/${name}/${hash}.${ext}` : path.replace('./src', '')
+    polyfillFiles[name] = isProd ?
+      `${conf.publicPath}static/polyfill/${name}/${hash}.${ext}` :
+      path.replace('./src', '')
   })
   return {
     entry: entries,
@@ -88,12 +93,11 @@ module.exports = (option) => {
         polyfills.map(({ name, path, hash, ext }) => ({
           from: path,
           to: `static/polyfill/${name}/${hash}.${ext}`
-        })).concat([{ from: 'src/favicon.ico', to: 'favicon.ico' },])
+        })).concat([{ from: 'src/favicon.ico', to: 'favicon.ico' }])
       )
     ])
   }
 }
-
 
 function postCssPlugins() {
   return [

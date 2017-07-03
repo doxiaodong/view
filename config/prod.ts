@@ -1,13 +1,13 @@
-const webpack = require('webpack')
-const webpackMerge = require('webpack-merge')
-const BabiliPlugin = require("babili-webpack-plugin")
+import * as webpack from 'webpack'
+import * as webpackMerge from 'webpack-merge'
+import * as BabiliPlugin from 'babili-webpack-plugin'
 
-const commonConfig = require('./common')
-const conf = require('./conf')
+import commonConfig from './common'
+import conf from './conf'
 
-const ENV = process.env.ENV = process.env.NODE_ENV = 'production'
+const env = process.env.ENV = process.env.NODE_ENV = 'production'
 
-module.exports = webpackMerge(commonConfig({ env: ENV }), {
+export default webpackMerge(commonConfig({ env }), {
   devtool: 'source-map',
   output: {
     path: conf.paths.dist,

@@ -1,4 +1,4 @@
-const MD5 = require('md5-file')
+import * as MD5 from 'md5-file'
 
 const polyfills = [
   {
@@ -9,4 +9,4 @@ const polyfills = [
   }
 ]
 
-module.exports = polyfills
+export default polyfills

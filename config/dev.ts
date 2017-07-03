@@ -1,12 +1,12 @@
-const webpack = require('webpack')
-const webpackMerge = require('webpack-merge')
+import * as webpack from 'webpack'
+import * as webpackMerge from 'webpack-merge'
 
-const commonConfig = require('./common')
-const conf = require('./conf')
+import commonConfig from './common'
+import conf from './conf'
 
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development'
 
-module.exports = webpackMerge(commonConfig({ env: ENV }), {
+export default webpackMerge(commonConfig({ env: ENV }), {
   devtool: 'eval',
   output: {
     path: conf.paths.dist,
