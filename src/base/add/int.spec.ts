@@ -18,7 +18,7 @@ describe('add int', () => {
     expect(addInt('111', '190', 2)).toBe('301')
     expect(addInt('17111', '3990', 2)).toBe('21101')
     expect(addInt('31', '-23', 1)).toBe('8')
-    expect(addInt('-312', '124')).toBe('-188')
+    expect(addInt('-312', '124', 1)).toBe('-188')
     expect(addInt('-312', '121', 1)).toBe('-191')
   })
   test('big than Infinity', () => {
