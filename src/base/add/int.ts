@@ -1,4 +1,4 @@
-export function addInt(a: string, b: string, maxLength = 15) {
+export function addInt(a: string, b: string, maxLength = 15, remainZero = false) {
   let aIsNegative = a[0] === '-'
   let bIsNegative = b[0] === '-'
 
@@ -16,7 +16,7 @@ export function addInt(a: string, b: string, maxLength = 15) {
     bIsNegative = false
   }
 
-  return removeUnuseZero(add(a, b), retIsNegative)
+  return removeUnuseZero(add(a, b), retIsNegative, remainZero)
 
   function add(pa, pb, ret = '', nextAdd = 0): string {
     const lenA = pa.length
@@ -77,10 +77,13 @@ export function addInt(a: string, b: string, maxLength = 15) {
   }
 }
 
-function removeUnuseZero(str: string, addNegative: boolean): string {
-  let ret = str.replace(/^0+/, '')
-  if (ret === '') {
-    ret = '0'
+function removeUnuseZero(str: string, addNegative: boolean, remainZero: boolean): string {
+  let ret = str
+  if (!remainZero) {
+    ret = ret.replace(/^0+/, '')
+    if (ret === '') {
+      ret = '0'
+    }
   }
 
   if (addNegative && ret !== '0') {

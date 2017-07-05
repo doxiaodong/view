@@ -1,6 +1,6 @@
 import { addInt } from './int'
 
-describe('add int', () => {
+describe('addInt', () => {
   test('normal', () => {
     expect(addInt('1', '1')).toBe('2')
     expect(addInt('1', '-1')).toBe('0')
