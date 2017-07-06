@@ -31,12 +31,12 @@ export function addInt(a: string, b: string, maxLength = 15, remainZero = false)
 
     nextAdd = 0
 
-    if (iab > one) {
+    if (iab >= one) {
       nextAdd = 1
       iab -= one
     }
 
-    if (iab > 0) {
+    if (iab >= 0) {
       iab = iab + one
       iab = (iab + '').slice(1) as any // special iab string
     }
@@ -56,7 +56,12 @@ export function addInt(a: string, b: string, maxLength = 15, remainZero = false)
       return add(nextA, nextB, ret, nextAdd)
     }
 
-    // 处理相减后值为 负数 的情况
+    // 处理相加后 nextAdd 为 1 的情况
+    if (nextAdd === 1) {
+      ret = '1' + ret
+    }
+
+    // 处理相加后 nextAdd 为 -1 的情况
     // 对应规则为 19920122 -> 80079878
     if (nextAdd === -1) {
       retIsNegative = true

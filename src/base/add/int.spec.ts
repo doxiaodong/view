@@ -12,6 +12,9 @@ describe('addInt', () => {
     expect(addInt('31', '-23')).toBe('8')
     expect(addInt('-312', '121')).toBe('-191')
     expect(addInt('-2', '1')).toBe('-1')
+
+    expect(addInt('40', '92')).toBe('132')
+    expect(addInt('1', '99')).toBe('100')
   })
   test('big', () => {
     expect(addInt('111', '129', 2)).toBe('240')
@@ -25,4 +28,18 @@ describe('addInt', () => {
     expect(addInt('9007199254740992', '1')).toBe('9007199254740993')
     expect(addInt('-9007199254740994', '1')).toBe('-9007199254740993')
   })
+  test('random', () => {
+    const arr = []
+    for (let i = 0; i < 10000; i++) {
+      arr.push([randomInt(), randomInt()])
+    }
+
+    arr.forEach((item) => {
+      expect(addInt(item[0] + '', item[1] + '')).toBe(item[0] + item[1] + '')
+    })
+  })
 })
+
+function randomInt() {
+  return Math.floor(Math.random() * 100000)
+}

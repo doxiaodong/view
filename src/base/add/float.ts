@@ -44,7 +44,6 @@ export function addFloat(a: string, b: string) {
   retFloat = retFloat.replace(/^-/, '')
   const first = retFloat[0]
 
-  // console.log(retFloat)
   retFloat = retFloat.slice(1)
 
   // 小数部分是负数则向整数部分借 1

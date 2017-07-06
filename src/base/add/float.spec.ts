@@ -23,4 +23,26 @@ describe('addFloat', () => {
     expect(addFloat('1.99', '-2.921')).toBe('-0.931')
     expect(addFloat('1.991', '-2.92')).toBe('-0.929')
   })
+
+  test('big than Infinity', () => {
+    expect(addFloat('9007199254740992.9007199254740992', '1')).toBe('9007199254740993.9007199254740992')
+    expect(addFloat('-9007199254740994.9007199254740992', '1')).toBe('-9007199254740993.9007199254740992')
+  })
+
+  test('random', () => {
+    const arr = []
+    for (let i = 0; i < 10000; i++) {
+      arr.push([randomFloat(), randomFloat()])
+    }
+
+    arr.forEach((item) => {
+      expect(addFloat(item[0], item[1])).toBe(
+        (+item[0] * 1000 + +item[1] * 1000 as any).toFixed(0) / 1000 + ''
+      )
+    })
+  })
 })
+
+function randomFloat() {
+  return (Math.random() * 100000).toFixed(3)
+}

@@ -7,7 +7,7 @@
     "clean": "rm -rf dist",
     "prebuild": "npm run lint && npm run test && npm run tsc:config",
     "build": "npm run clean && webpack --config config/tsc/prod.js",
-    "test": "jest --coverage",
+    "test": "jest --coverage --no-cache",
     "tslint": "tslint",
     "lint": "npm run tslint \"{src,__tests__,config}/**/*.ts\"",
     "prepush": "npm run build",
